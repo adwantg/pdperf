@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pandas-perf-optimizer"
+version = "0.1.0"
+description = "Static linter + optional autofix for common Pandas performance anti-patterns."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Goutam"}]
+keywords = ["developer-tools", "cli"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+dependencies = [
+]
+
+[project.urls]
+Homepage = "https://github.com/adwantg"
+
+[project.scripts]
+ppopt = "pandas_perf_opt.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

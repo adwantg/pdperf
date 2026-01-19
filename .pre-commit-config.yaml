@@ -1,0 +1,19 @@
+# Pre-commit configuration for ppopt
+# Add this to your .pre-commit-config.yaml:
+#
+# repos:
+#   - repo: https://github.com/adwantg/ppopt
+#     rev: v0.1.0
+#     hooks:
+#       - id: ppopt
+
+repos:
+  - repo: local
+    hooks:
+      - id: ppopt
+        name: ppopt (pandas performance linter)
+        entry: ppopt scan --fail-on error
+        language: python
+        types: [python]
+        # Optionally customize:
+        # args: ['--severity-threshold', 'warn', '--ignore', 'PPO005']
