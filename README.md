@@ -15,15 +15,15 @@ pdperf scans your Python code for common Pandas anti-patterns that *work correct
 
 ## 📑 Table of Contents
 
-- [Why pdperf?](#why-pdperf)
-- [Quick Start](#quick-start)
-- [CI-Friendly Guarantees](#ci-friendly-guarantees)
-- [Rules Reference](#rules-reference)
-- [Detailed Rule Examples](#detailed-rule-examples)
-- [CLI Reference](#cli-reference)
-- [How pdperf Works — Technical Deep-Dive](#how-pdperf-works--technical-deep-dive)
-- [Integrations](#integrations)
-- [License](#license)
+- [Why pdperf?](#-why-pdperf)
+- [Quick Start](#-quick-start)
+- [CI-Friendly Guarantees](#-ci-friendly-guarantees)
+- [Rules Reference](#-rules-reference)
+- [Detailed Rule Examples](#-detailed-rule-examples)
+- [CLI Reference](#️-cli-reference)
+- [How pdperf Works — Technical Deep-Dive](#-how-pdperf-works--technical-deep-dive)
+- [Integrations](#-integrations)
+- [License](#-license)
 
 ---
 
@@ -875,25 +875,6 @@ pandas-perf-optimizer/
 |------------|-----------|
 | **Python** | 3.10+ |
 | **Pandas** | 1.5+, 2.x (detection is version-agnostic) |
-
----
-
-## 🆚 Comparison with Other Tools
-
-| Feature | pdperf | pandas-vet | Ruff PD |
-|---------|-------|------------|---------|
-| Catches iterrows loops | ✅ | — | — |
-| Catches apply(axis=1) | ✅ | — | — |
-| Catches concat-in-loop (O(n²)) | ✅ | — | — |
-| Catches chained indexing | ✅ | — | — |
-| Catches groupby().apply() | ✅ | — | — |
-| Performance-focused | ✅ | — (style) | — (style) |
-| JSON/SARIF output | ✅ | — | ✅ |
-| Detailed explanations | ✅ | — | — |
-| Patch generation | ✅ | — | — |
-| Pre-commit integration | ✅ | ✅ | ✅ |
-
-*Legend: ✅ = supported, — = not currently targeted*
 
 ---
 

@@ -1,0 +1,18 @@
+# Codacy configuration
+# See: https://docs.codacy.com/repositories-configure/codacy-configuration-file/
+
+---
+engines:
+  markdownlint:
+    enabled: true
+    exclude_paths:
+      - "README.md"  # Emoji-based anchors cause false positives for MD051
+
+  bandit:
+    enabled: true
+    # B310 warnings are expected for urlopen in scripts/
+    
+exclude_paths:
+  - "docs/**"
+  - "datasets/**"
+  - "*.json"
