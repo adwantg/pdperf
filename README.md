@@ -5,6 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Downloads](https://img.shields.io/pypi/dm/pdperf)](https://pypi.org/project/pdperf/)
 [![CI](https://github.com/adwantg/pdperf/actions/workflows/ci.yml/badge.svg)](https://github.com/adwantg/pdperf/actions/workflows/ci.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a9559933e1a04c669ec4ce263a70c94f)](https://app.codacy.com/gh/adwantg/pdperf/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-zero-green.svg)]()
 [![Tests](https://img.shields.io/badge/tests-42%2F42%20passing-success)]()
 [![Author: gadwant](https://img.shields.io/badge/author-gadwant-purple.svg)](https://github.com/adwantg)
