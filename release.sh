@@ -111,7 +111,7 @@ echo ""
 
 # Step 5: Clean old builds
 echo -e "${YELLOW}[5/8] Cleaning old builds...${NC}"
-rm -rf dist/ build/ *.egg-info src/*.egg-info
+rm -rf dist/ build/ ./*.egg-info src/*.egg-info
 echo -e "${GREEN}✓ Cleaned dist/, build/, and egg-info directories${NC}"
 echo ""
 

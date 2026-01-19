@@ -68,6 +68,24 @@ output/
 *.tmp
 *.bak
 
+# Environment files with secrets
+.env
+.env.local
+
+# Internal planning/TODO
 TODO.md
+
+# Internal docs and datasets
 docs/*
 datasets/*
+
+# Generated output
+codacy_issues.json
+
+# Debug/utility scripts (internal)
+scripts/debug_codacy.py
+
+# Editor backups
+*.orig
+
+*.sh

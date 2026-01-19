@@ -3,7 +3,6 @@
 Each test case uses inline Python code to verify detection patterns.
 """
 
-import pytest
 from pandas_perf_opt.analyzer import analyze_source
 from pandas_perf_opt.rules import Severity
 

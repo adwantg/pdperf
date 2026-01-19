@@ -12,7 +12,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Iterator
 
-from .rules import RULES, Severity, Confidence, get_rule
+from .rules import Severity, Confidence, get_rule
 
 
 @dataclass(frozen=True)

@@ -20,10 +20,9 @@ pdperf scans your Python code for common Pandas anti-patterns that *work correct
 - [CI-Friendly Guarantees](#-ci-friendly-guarantees)
 - [Rules Reference](#-rules-reference)
 - [Detailed Rule Examples](#-detailed-rule-examples)
-- [CLI Reference](#️-cli-reference)
+- [CLI Reference](#-cli-reference)
 - [How pdperf Works — Technical Deep-Dive](#-how-pdperf-works--technical-deep-dive)
 - [Integrations](#-integrations)
-- [Contributing](#-contributing)
 - [License](#-license)
 
 ---
