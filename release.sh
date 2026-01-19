@@ -64,6 +64,11 @@ else
     echo -e "${YELLOW}[1/8] No virtual environment found, using system Python...${NC}"
 fi
 
+# Step 1b: Install package in editable mode
+echo -e "${YELLOW}[1b/8] Installing package in editable mode...${NC}"
+pip install -e . -q
+echo -e "${GREEN}✓ Package installed${NC}"
+
 # Step 2: Run tests
 echo -e "${YELLOW}[2/8] Running tests...${NC}"
 if pytest -v; then
