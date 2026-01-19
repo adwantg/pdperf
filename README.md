@@ -1,5 +1,6 @@
 # pdperf — Pandas Performance Optimizer
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/32873a9d917344e8ba1d838e8e099501)](https://app.codacy.com/gh/adwantg/pdperf?utm_source=github.com&utm_medium=referral&utm_content=adwantg/pdperf&utm_campaign=Badge_Grade)
 [![PyPI](https://img.shields.io/pypi/v/pdperf)](https://pypi.org/project/pdperf/)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
