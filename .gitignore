@@ -88,4 +88,5 @@ scripts/debug_codacy.py
 # Editor backups
 *.orig
 
+release.sh
 *.sh
