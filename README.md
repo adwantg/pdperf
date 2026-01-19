@@ -879,29 +879,6 @@ pandas-perf-optimizer/
 
 ---
 
-## 📜 License
-
-MIT License — see [LICENSE](LICENSE) for details.
-
----
-
-## 👨‍💻 Author
-
-**gadwant** — [GitHub](https://github.com/adwantg)
-
----
-
-## 🙏 Contributing
-
-Contributions welcome! Areas of interest:
-
-- New rule implementations
-- False positive improvements
-- VS Code extension
-- Additional output formats
-
----
-
 ## 📚 References
 
 - [Pandas Performance Guide](https://pandas.pydata.org/docs/user_guide/enhancingperf.html) — Official pandas performance tips

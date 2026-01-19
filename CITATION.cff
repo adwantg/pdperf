@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "ppopt - Pandas Performance Optimizer"
+abstract: "A static linter that catches silent Pandas performance killers before they ship to production."
+authors:
+  - family-names: "Adwant"
+    given-names: "Goutam"
+    alias: "gadwant"
+repository-code: "https://github.com/adwantg/ppopt"
+license: MIT
+version: "0.2.0"
+date-released: "2026-01-19"
+keywords:
+  - pandas
+  - performance
+  - linter
+  - static-analysis
+  - python
+  - data-science
