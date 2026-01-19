@@ -85,6 +85,7 @@ def fetch_issues(
     request = Request(full_url, data=json.dumps(body).encode(), headers=headers, method="POST")
     
     try:
+        # nosec B310 - URL is constructed from trusted config, always HTTPS
         with urlopen(request) as response:
             return json.loads(response.read().decode())
     except HTTPError as e:
@@ -99,7 +100,6 @@ def format_issue(issue: dict) -> str:
     file_path = issue.get("filePath", "unknown")
     line = issue.get("lineNumber", "?")
     level = issue.get("level", "unknown")
-    category = issue.get("patternInfo", {}).get("category", "unknown")
     title = issue.get("patternInfo", {}).get("title", "No title")
     message = issue.get("message", "No message")
     

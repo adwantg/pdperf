@@ -17,7 +17,7 @@ from pathlib import Path
 from . import __version__
 from .analyzer import analyze_path_with_errors
 from .config import load_config, apply_profile, list_profiles
-from .reporting import format_text_with_errors, write_json, write_json_with_errors, write_sarif
+from .reporting import format_text_with_errors, write_json_with_errors, write_sarif
 from .rules import Severity, list_rules, get_rule
 
 

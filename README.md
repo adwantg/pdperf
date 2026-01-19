@@ -15,15 +15,15 @@ pdperf scans your Python code for common Pandas anti-patterns that *work correct
 
 ## 📑 Table of Contents
 
-- [Why pdperf?](#-why-pdperf)
-- [Quick Start](#-quick-start)
-- [CI-Friendly Guarantees](#-ci-friendly-guarantees)
-- [Rules Reference](#-rules-reference)
-- [Detailed Rule Examples](#-detailed-rule-examples)
-- [CLI Reference](#-cli-reference)
-- [How pdperf Works — Technical Deep-Dive](#-how-pdperf-works--technical-deep-dive)
-- [Integrations](#-integrations)
-- [License](#-license)
+- [Why pdperf?](#why-pdperf)
+- [Quick Start](#quick-start)
+- [CI-Friendly Guarantees](#ci-friendly-guarantees)
+- [Rules Reference](#rules-reference)
+- [Detailed Rule Examples](#detailed-rule-examples)
+- [CLI Reference](#cli-reference)
+- [How pdperf Works — Technical Deep-Dive](#how-pdperf-works--technical-deep-dive)
+- [Integrations](#integrations)
+- [License](#license)
 
 ---
 
