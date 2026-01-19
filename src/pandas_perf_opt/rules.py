@@ -1,4 +1,4 @@
-"""Rule definitions for ppopt.
+"""Rule definitions for pdperf.
 
 Each rule is a dataclass with metadata and detection logic.
 
@@ -40,7 +40,7 @@ class Rule:
     suggested_fix: str
     confidence: Confidence = Confidence.HIGH  # Default to high confidence
     docs_url: str | None = None
-    explanation: str | None = None  # Extended explanation for `ppopt explain`
+    explanation: str | None = None  # Extended explanation for `pdperf explain`
     patchable: bool = False  # Whether this rule supports auto-patching
 
     def __str__(self) -> str:

@@ -1,4 +1,4 @@
-"""Golden tests for ppopt rules.
+"""Golden tests for pdperf rules.
 
 Each test case uses inline Python code to verify detection patterns.
 """

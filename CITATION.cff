@@ -1,13 +1,13 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
-title: "ppopt - Pandas Performance Optimizer"
+title: "pdperf - Pandas Performance Optimizer"
 abstract: "A static linter that catches silent Pandas performance killers before they ship to production."
 authors:
   - family-names: "Adwant"
     given-names: "Goutam"
     alias: "gadwant"
-repository-code: "https://github.com/adwantg/ppopt"
+repository-code: "https://github.com/adwantg/pdperf"
 license: MIT
 version: "0.2.0"
 date-released: "2026-01-19"

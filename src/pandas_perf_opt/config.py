@@ -1,6 +1,6 @@
 """Configuration loading from pyproject.toml.
 
-Provides project-level configuration for ppopt.
+Provides project-level configuration for pdperf.
 
 Author: gadwant
 """
@@ -19,7 +19,7 @@ except ImportError:
 
 @dataclass
 class Config:
-    """ppopt configuration loaded from pyproject.toml."""
+    """pdperf configuration loaded from pyproject.toml."""
     select: set[str] = field(default_factory=set)
     ignore: set[str] = field(default_factory=set)
     severity_threshold: str = "warn"
@@ -65,8 +65,8 @@ def load_config(path: Path | None = None) -> Config:
     except Exception:
         return Config()
 
-    ppopt_config = data.get("tool", {}).get("ppopt", {})
-    return Config.from_dict(ppopt_config)
+    pdperf_config = data.get("tool", {}).get("pdperf", {})
+    return Config.from_dict(pdperf_config)
 
 
 def find_pyproject_toml() -> Path | None:

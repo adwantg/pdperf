@@ -1,7 +1,7 @@
 """Example: Slow code using iterrows - PPO001 anti-pattern.
 
 This demonstrates the performance cost of using iterrows() for row iteration.
-ppopt will flag this with: PPO001 - Avoid df.iterrows() or df.itertuples() in loops
+pdperf will flag this with: PPO001 - Avoid df.iterrows() or df.itertuples() in loops
 """
 
 import pandas as pd

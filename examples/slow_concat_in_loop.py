@@ -1,7 +1,7 @@
 """Example: Slow code using concat in loop - PPO003 anti-pattern.
 
 This demonstrates the O(n²) performance problem of growing DataFrames in loops.
-ppopt will flag this with: PPO003 - Building DataFrame via append/concat in a loop is O(n²)
+pdperf will flag this with: PPO003 - Building DataFrame via append/concat in a loop is O(n²)
 """
 
 import pandas as pd

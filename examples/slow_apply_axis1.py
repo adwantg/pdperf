@@ -1,7 +1,7 @@
 """Example: Slow code using apply(axis=1) - PPO002 anti-pattern.
 
 This demonstrates the performance cost of row-wise apply operations.
-ppopt will flag this with: PPO002 - Row-wise df.apply(axis=1) is slow
+pdperf will flag this with: PPO002 - Row-wise df.apply(axis=1) is slow
 """
 
 import pandas as pd

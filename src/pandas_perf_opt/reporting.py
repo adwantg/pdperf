@@ -25,7 +25,7 @@ def findings_to_dict(findings: list["Finding"], version: str = "0.1.0") -> dict:
     """
     return {
         "schema_version": "1.0",
-        "tool": "ppopt",
+        "tool": "pdperf",
         "tool_version": version,
         "total_findings": len(findings),
         "findings": [f.to_dict() for f in sorted(findings, key=lambda x: (x.path, x.line, x.col, x.rule_id))],
@@ -40,7 +40,7 @@ def findings_to_dict_with_errors(
     """Convert findings and parse errors to a dictionary for JSON serialization."""
     return {
         "schema_version": "1.0",
-        "tool": "ppopt",
+        "tool": "pdperf",
         "tool_version": version,
         "total_findings": len(findings),
         "total_parse_errors": len(parse_errors),
@@ -137,7 +137,7 @@ def write_sarif(findings: list["Finding"], out_path: str, version: str = "0.1.0"
             rules[f.rule_id] = {
                 "id": f.rule_id,
                 "shortDescription": {"text": f.message},
-                "helpUri": f"https://ppopt.dev/rules/{f.rule_id}",
+                "helpUri": f"https://pdperf.dev/rules/{f.rule_id}",
                 "properties": {
                     "severity": f.severity.value,
                 }
@@ -167,9 +167,9 @@ def write_sarif(findings: list["Finding"], out_path: str, version: str = "0.1.0"
         "runs": [{
             "tool": {
                 "driver": {
-                    "name": "ppopt",
+                    "name": "pdperf",
                     "version": version,
-                    "informationUri": "https://github.com/adwantg/ppopt",
+                    "informationUri": "https://github.com/adwantg/pdperf",
                     "rules": list(rules.values())
                 }
             },

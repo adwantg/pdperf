@@ -1,15 +1,34 @@
-# ppopt — Pandas Performance Optimizer
+# pdperf — Pandas Performance Optimizer
 
+[![PyPI](https://img.shields.io/pypi/v/pdperf)](https://pypi.org/project/pdperf/)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Downloads](https://img.shields.io/pypi/dm/pdperf)](https://pypi.org/project/pdperf/)
+[![CI](https://github.com/adwantg/pdperf/actions/workflows/ci.yml/badge.svg)](https://github.com/adwantg/pdperf/actions/workflows/ci.yml)
+[![Zero Dependencies](https://img.shields.io/badge/dependencies-zero-green.svg)]()
+[![Tests](https://img.shields.io/badge/tests-42%2F42%20passing-success)]()
+[![Author: gadwant](https://img.shields.io/badge/author-gadwant-purple.svg)](https://github.com/adwantg)
 
 > **A static linter that catches silent Pandas performance killers before they ship to production.**
 
-ppopt scans your Python code for common Pandas anti-patterns that *work correctly* but are often **10–100× slower at scale** than necessary. It's **local-first**, **deterministic**, and **CI-friendly** — no code execution required.
+pdperf scans your Python code for common Pandas anti-patterns that *work correctly* but are often **10–100× slower at scale** than necessary. It's **local-first**, **deterministic**, and **CI-friendly** — no code execution required.
+
+## 📑 Table of Contents
+
+- [Why pdperf?](#-why-pdperf)
+- [Quick Start](#-quick-start)
+- [CI-Friendly Guarantees](#-ci-friendly-guarantees)
+- [Rules Reference](#-rules-reference)
+- [Detailed Rule Examples](#-detailed-rule-examples)
+- [CLI Reference](#️-cli-reference)
+- [How pdperf Works — Technical Deep-Dive](#-how-pdperf-works--technical-deep-dive)
+- [Integrations](#-integrations)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
-## 🎯 Why ppopt?
+## 🎯 Why pdperf?
 
 Pandas makes it easy to write code that works but scales poorly:
 
@@ -18,11 +37,11 @@ Pandas makes it easy to write code that works but scales poorly:
 for idx, row in df.iterrows():
     total += row['price'] * row['quantity']
 
-# ppopt catches this and suggests:
+# pdperf catches this and suggests:
 # 💡 Use vectorized: (df['price'] * df['quantity']).sum()
 ```
 
-These issues often start in notebooks and quietly move into ETL pipelines. **ppopt catches them before production.**
+These issues often start in notebooks and quietly move into ETL pipelines. **pdperf catches them before production.**
 
 ---
 
@@ -32,11 +51,11 @@ These issues often start in notebooks and quietly move into ETL pipelines. **ppo
 
 ```bash
 # PyPI (coming soon)
-# pip install ppopt
+# pip install pdperf
 
 # Install from source
-git clone https://github.com/adwantg/ppopt.git
-cd ppopt
+git clone https://github.com/adwantg/pdperf.git
+cd pdperf
 pip install -e .
 
 # Or with dev dependencies
@@ -47,14 +66,14 @@ pip install -e ".[dev]"
 
 ```bash
 # Scan a file or directory
-ppopt scan your_code.py
-ppopt scan src/
+pdperf scan your_code.py
+pdperf scan src/
 
 # List all available rules
-ppopt rules
+pdperf rules
 
 # Get detailed explanation for a rule
-ppopt explain PPO003
+pdperf explain PPO003
 ```
 
 ### Example Output
@@ -76,7 +95,7 @@ ppopt explain PPO003
 
 ## ✅ CI-Friendly Guarantees
 
-- **No code execution**: ppopt parses code using AST only — safe on any codebase
+- **No code execution**: pdperf parses code using AST only — safe on any codebase
 - **Deterministic output**: stable ordering by `path → line → col → rule_id`
 - **Schema-versioned JSON**: `schema_version` field for tooling stability
 - **Pattern-based detection**: doesn't require import resolution or `import pandas as pd`
@@ -94,7 +113,7 @@ ppopt explain PPO003
 ```json
 {
   "schema_version": "1.0",
-  "tool": "ppopt",
+  "tool": "pdperf",
   "tool_version": "0.1.0",
   "total_findings": 3,
   "findings": [
@@ -115,7 +134,7 @@ ppopt explain PPO003
 
 ## 📋 Rules Reference
 
-ppopt includes **8 rules** targeting the most impactful Pandas performance anti-patterns:
+pdperf includes **8 rules** targeting the most impactful Pandas performance anti-patterns:
 
 | Rule | Name | Severity | Patchable | Confidence |
 |------|------|----------|-----------|------------|
@@ -134,7 +153,7 @@ ppopt includes **8 rules** targeting the most impactful Pandas performance anti-
 - **High confidence**: Structural AST pattern match (precise)
 - **Medium confidence**: Heuristic-based detection (see rule details for boundaries)
 
-> **Note:** ppopt is import-agnostic by design. In rare cases, non-pandas objects with similar method names (e.g., `.values`) may be flagged. Use `--ignore` or `--select` to control rules.
+> **Note:** pdperf is import-agnostic by design. In rare cases, non-pandas objects with similar method names (e.g., `.values`) may be flagged. Use `--ignore` or `--select` to control rules.
 
 ---
 
@@ -385,9 +404,9 @@ df['clean'] = df['text'].str.strip().str.replace('  ', ' ', regex=False)
 ### Commands
 
 ```bash
-ppopt scan <path>          # Scan files for anti-patterns
-ppopt rules                # List all rules
-ppopt explain <RULE_ID>    # Explain a specific rule in detail
+pdperf scan <path>          # Scan files for anti-patterns
+pdperf rules                # List all rules
+pdperf explain <RULE_ID>    # Explain a specific rule in detail
 ```
 
 ### Scan Options
@@ -407,29 +426,29 @@ ppopt explain <RULE_ID>    # Explain a specific rule in detail
 
 ```bash
 # Quick check of a single file
-ppopt scan etl/transform.py
+pdperf scan etl/transform.py
 
 # Full project scan with JSON output for CI
-ppopt scan src/ --format json --out reports/ppopt.json --fail-on error
+pdperf scan src/ --format json --out reports/pdperf.json --fail-on error
 
 # Generate SARIF for GitHub Security integration
-ppopt scan . --format sarif --out results.sarif
+pdperf scan . --format sarif --out results.sarif
 
 # Focus on critical issues only
-ppopt scan . --severity-threshold error --select PPO003,PPO004
+pdperf scan . --severity-threshold error --select PPO003,PPO004
 
 # Generate auto-fix patch
-ppopt scan . --patch out/fixes.diff
+pdperf scan . --patch out/fixes.diff
 ```
 
 ---
 
 ## ⚙️ Configuration (Planned)
 
-ppopt will support configuration via `pyproject.toml`:
+pdperf will support configuration via `pyproject.toml`:
 
 ```toml
-[tool.ppopt]
+[tool.pdperf]
 select = ["PPO001", "PPO002", "PPO003", "PPO004", "PPO005"]
 ignore = ["PPO006"]
 severity_threshold = "warn"
@@ -439,9 +458,9 @@ format = "json"
 
 ---
 
-## 🔬 How ppopt Works — Technical Deep-Dive
+## 🔬 How pdperf Works — Technical Deep-Dive
 
-This section explains the internals of ppopt for curious developers. Whether you're a beginner or an expert, you'll understand exactly how we detect performance anti-patterns.
+This section explains the internals of pdperf for curious developers. Whether you're a beginner or an expert, you'll understand exactly how we detect performance anti-patterns.
 
 ### The Big Picture
 
@@ -452,7 +471,7 @@ This section explains the internals of ppopt for curious developers. Whether you
 └─────────────┘     └─────────────┘     └─────────────┘     └─────────────┘
 ```
 
-**In simple terms:** ppopt reads your Python code, converts it into a tree structure, walks through that tree looking for patterns that indicate slow code, and reports what it finds.
+**In simple terms:** pdperf reads your Python code, converts it into a tree structure, walks through that tree looking for patterns that indicate slow code, and reports what it finds.
 
 ---
 
@@ -487,7 +506,7 @@ For
 | **Running code** | Accurate | Dangerous, slow, needs dependencies |
 | **AST parsing** ✅ | Safe, accurate, fast | Requires understanding tree structure |
 
-**ppopt uses Python's built-in `ast` module** — the same parser Python itself uses. This means:
+**pdperf uses Python's built-in `ast` module** — the same parser Python itself uses. This means:
 - ✅ **100% safe** — we never execute your code
 - ✅ **Handles all Python syntax** — even complex expressions
 - ✅ **Zero false positives from comments/strings** — AST ignores them
@@ -495,7 +514,7 @@ For
 ```python
 import ast
 
-# This is what ppopt does internally:
+# This is what pdperf does internally:
 source_code = open("your_file.py").read()
 tree = ast.parse(source_code)  # Convert text → tree
 ```
@@ -513,7 +532,7 @@ Instead of manually searching the tree, we use a **Visitor** — an object that 
 - It only alerts on specific items (patterns we care about)
 - It doesn't modify anything — just observes
 
-#### How ppopt implements this:
+#### How pdperf implements this:
 
 ```python
 class PandasPerfVisitor(ast.NodeVisitor):
@@ -626,7 +645,7 @@ def visit_Assign(self, node):
 
 ### Step 5: Confidence Scoring
 
-Not all detections are equally reliable. ppopt includes a **confidence score** with each finding:
+Not all detections are equally reliable. pdperf includes a **confidence score** with each finding:
 
 | Level | Meaning | Example |
 |-------|---------|---------|
@@ -651,7 +670,7 @@ class Finding:
 
 ### Step 6: Deterministic Output
 
-For CI/CD reliability, ppopt guarantees **deterministic output**:
+For CI/CD reliability, pdperf guarantees **deterministic output**:
 
 ```python
 # Findings are always sorted by:
@@ -669,7 +688,7 @@ This means:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                         ppopt                               │
+│                         pdperf                               │
 ├─────────────────────────────────────────────────────────────┤
 │  cli.py          │ Entry point, argument parsing, output   │
 │  analyzer.py     │ AST parsing, visitor, finding creation  │
@@ -700,7 +719,7 @@ This means:
 
 **Total complexity:** O(n) for a single file — linear in code size.
 
-**Benchmark:** ppopt scans ~10,000 lines/second on typical hardware.
+**Benchmark:** pdperf scans ~10,000 lines/second on typical hardware.
 
 ---
 
@@ -728,7 +747,7 @@ This means:
 
 ---
 
-### Extending ppopt
+### Extending pdperf
 
 Want to add a new rule? Here's the template:
 
@@ -757,7 +776,7 @@ def visit_Call(self, node):
 ### CI: Fail PRs on Errors
 
 ```bash
-ppopt scan . --format json --out ppopt.json --fail-on error
+pdperf scan . --format json --out pdperf.json --fail-on error
 ```
 
 ### Pre-commit Hook
@@ -768,9 +787,9 @@ Add to `.pre-commit-config.yaml`:
 repos:
   - repo: local
     hooks:
-      - id: ppopt
-        name: ppopt (pandas performance linter)
-        entry: ppopt scan --fail-on error
+      - id: pdperf
+        name: pdperf (pandas performance linter)
+        entry: pdperf scan --fail-on error
         language: python
         types: [python]
 ```
@@ -782,7 +801,7 @@ name: Lint
 on: [push, pull_request]
 
 jobs:
-  ppopt:
+  pdperf:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -790,7 +809,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install -e .
-      - run: ppopt scan src/ --format sarif --out results.sarif --fail-on error
+      - run: pdperf scan src/ --format sarif --out results.sarif --fail-on error
       - uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: results.sarif
@@ -815,14 +834,14 @@ python -m pytest tests/ -v
 
 ```bash
 # Check version
-ppopt --version
-# → ppopt 0.1.0
+pdperf --version
+# → pdperf 0.1.0
 
 # List rules (should show 8 rules)
-ppopt rules
+pdperf rules
 
 # Test on example files
-ppopt scan examples/
+pdperf scan examples/
 ```
 
 ---
@@ -862,7 +881,7 @@ pandas-perf-optimizer/
 
 ## 🆚 Comparison with Other Tools
 
-| Feature | ppopt | pandas-vet | Ruff PD |
+| Feature | pdperf | pandas-vet | Ruff PD |
 |---------|-------|------------|---------|
 | Catches iterrows loops | ✅ | — | — |
 | Catches apply(axis=1) | ✅ | — | — |

@@ -1,4 +1,4 @@
-"""ppopt CLI - Pandas Performance Optimizer.
+"""pdperf CLI - Pandas Performance Optimizer.
 
 Commands:
     scan      Scan files for performance anti-patterns
@@ -24,10 +24,10 @@ from .rules import Severity, Confidence, list_rules, get_rule
 def build_parser() -> argparse.ArgumentParser:
     """Build the argument parser."""
     parser = argparse.ArgumentParser(
-        prog="ppopt",
+        prog="pdperf",
         description="Pandas Performance Optimizer - Static linter for pandas anti-patterns",
     )
-    parser.add_argument("--version", action="version", version=f"ppopt {__version__}")
+    parser.add_argument("--version", action="version", version=f"pdperf {__version__}")
 
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
 
@@ -163,8 +163,8 @@ def generate_patch(findings: list, source_files: dict[str, str]) -> str:
             # For now, add a comment indicating the fix needed
             elif finding.rule_id == "PPO004":
                 indent = len(line) - len(line.lstrip())
-                comment = " " * indent + "# TODO (ppopt): Rewrite using .loc[mask, col] = val\n"
-                if not modified_lines[line_idx].startswith(" " * indent + "# TODO (ppopt)"):
+                comment = " " * indent + "# TODO (pdperf): Rewrite using .loc[mask, col] = val\n"
+                if not modified_lines[line_idx].startswith(" " * indent + "# TODO (pdperf)"):
                     modified_lines.insert(line_idx, comment)
         
         if original_lines != modified_lines:
