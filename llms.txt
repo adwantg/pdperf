@@ -1,0 +1,57 @@
+# pdperf — Pandas Performance Optimizer
+
+> A static linter that catches slow Pandas anti-patterns (10-100× performance improvements) before production. Zero dependencies, CI-friendly, deterministic output.
+
+## Quick Start
+
+- [Installation](https://github.com/adwantg/pdperf#-quick-start): `pip install pdperf`
+- [Basic Usage](https://github.com/adwantg/pdperf#basic-usage): `pdperf scan your_code.py`
+- [Rule Reference](https://github.com/adwantg/pdperf#-rules-reference): 8 rules targeting pandas anti-patterns
+
+## Rules Overview
+
+| Rule | What it catches | Suggested Fix |
+|------|----------------|---------------|
+| PPO001 | iterrows/itertuples loops | Use vectorized operations: `df['a'] * df['b']` |
+| PPO002 | apply(axis=1) row-wise | Use direct column ops: `df['x'] + df['y']` |
+| PPO003 | concat/append in loop (O(n²)) | Collect in list, concat once |
+| PPO004 | Chained indexing assignment | Use `df.loc[mask, 'col'] = value` |
+| PPO005 | Index churn in loop | Set index once outside loop |
+| PPO006 | .values instead of .to_numpy() | Use explicit `.to_numpy()` |
+| PPO007 | groupby().apply() | Use built-in agg: `.sum()`, `.mean()` |
+| PPO008 | String ops in loop | Use vectorized `.str` accessor |
+
+## CLI Commands
+
+```bash
+pdperf scan <path>           # Scan files for anti-patterns
+pdperf rules                 # List all rules
+pdperf explain <RULE_ID>     # Explain a specific rule
+```
+
+## Output Formats
+
+- `--format text` (default): Human-readable console output
+- `--format json`: Schema-versioned JSON for tooling
+- `--format sarif`: SARIF for GitHub Security integration
+
+## Integration
+
+- [Pre-commit hook](https://github.com/adwantg/pdperf#pre-commit-hook): Add to .pre-commit-config.yaml
+- [GitHub Actions](https://github.com/adwantg/pdperf#github-actions): CI integration example
+- [JSON output](https://github.com/adwantg/pdperf#json-output-schema): For tooling integration
+
+## When to Use pdperf
+
+Use pdperf when you want to:
+- Lint pandas code for performance anti-patterns before production
+- Catch iterrows(), apply(axis=1), concat-in-loop patterns
+- Add automated pandas code quality checks to CI/CD pipelines
+- Generate SARIF reports for GitHub Security tab
+
+## Key Features
+
+- **No code execution**: Safe AST-only parsing
+- **Zero dependencies**: Pure Python stdlib
+- **Deterministic output**: Stable ordering for CI
+- **Auto-fix support**: `--patch` for fixable rules (PPO004, PPO006)

@@ -1,0 +1,15 @@
+- id: pdperf
+  name: pdperf (pandas performance linter)
+  description: Catch slow pandas anti-patterns before they ship to production
+  entry: pdperf scan --fail-on error
+  language: python
+  types: [python]
+  require_serial: true
+
+- id: pdperf-warn
+  name: pdperf (warnings only)
+  description: Check for pandas anti-patterns (warnings only, no failure)
+  entry: pdperf scan --fail-on none
+  language: python
+  types: [python]
+  require_serial: true
